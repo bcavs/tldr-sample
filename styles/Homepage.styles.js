@@ -7,7 +7,6 @@ export const HomepageContainer = styled.div`
   background: #0c111b;
   color: #fff;
   align-items: center;
-  padding: 0 2rem;
   grid-template-columns: 1fr;
   grid-template-areas:
     "content"
@@ -15,7 +14,7 @@ export const HomepageContainer = styled.div`
 
   ${media.medium`
     grid-template-areas: "content decorative";
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 60% 40%;
   `}
 `;
 
@@ -25,6 +24,7 @@ export const CopyContent = styled.div`
   flex-direction: column;
   max-width: 500px;
   justify-self: center;
+  padding: 0 1rem;
 `;
 
 export const TLDR = styled(typography.H1)`
@@ -56,6 +56,7 @@ export const FormControl = styled.div`
   input {
     flex: 1;
     border-radius: 8px;
+    padding: 1rem;
   }
   button {
     padding: 1rem 2rem;
@@ -95,9 +96,18 @@ export const Gradient = styled.div`
   height: 100%;
   width: 100%;
   background: linear-gradient(
-    162.9deg,
-    #0c111b 22.92%,
-    rgba(12, 17, 27, 0) 50.52%,
-    #0c111b 76.56%
+    341.06deg,
+    rgba(12, 17, 27, 0) 0%,
+    #0c111b 47.88%,
+    #0c111b 85.12%
   );
+
+  ${media.medium`
+    background: linear-gradient(
+      162.9deg,
+      #0c111b 22.92%,
+      rgba(12, 17, 27, 0) 50.52%,
+      #0c111b 76.56%
+    );  
+  `}
 `;

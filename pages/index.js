@@ -28,7 +28,7 @@ export default function Home() {
           tech 📱, and programming 💻!
         </Subhead>
         <FormControl>
-          <input type="email" />
+          <input type="email" placeholder="Email" />
           <button>
             <ButtonText>Subscribe</ButtonText>
           </button>
