@@ -22,7 +22,6 @@ export default function Home() {
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
 
-  //send email to api on button click
   const handleSubmit = async (e) => {
     setSuccess(false);
     setError(false);

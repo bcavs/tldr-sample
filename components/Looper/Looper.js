@@ -7,8 +7,6 @@ const Looper = ({ speed, direction, children }) => {
   const outerRef = useRef(null);
   const innerRef = useRef(null);
 
-  console.log("speed", speed);
-
   function resetAnimation() {
     if (innerRef?.current) {
       innerRef.current.setAttribute("data-animate", "false");
