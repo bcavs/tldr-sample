@@ -6,7 +6,7 @@ import { Looper } from "@components";
 const {
   HomepageContainer,
   TLDR,
-  CopyContent,
+  Content,
   DecorativeContent,
   Headline,
   Subhead,
@@ -15,6 +15,8 @@ const {
   Gradient,
   ErrorText,
   SuccessText,
+  Links,
+  Subtext,
 } = HomepageStyles;
 
 export default function Home() {
@@ -51,7 +53,7 @@ export default function Home() {
 
   return (
     <HomepageContainer>
-      <CopyContent>
+      <Content>
         <TLDR>
           <span>T</span>
           <span>L</span>
@@ -78,7 +80,13 @@ export default function Home() {
           {error && <ErrorText>Invalid email</ErrorText>}
           {success && <SuccessText>You've subscribed</SuccessText>}
         </FormControl>
-      </CopyContent>
+        <Subtext>Join 750,000+ readers for one daily email</Subtext>
+
+        <Links>
+          <a href="https://tldr.tech/privacy">Privacy</a>
+          <a href="https://tldr.tech/tech/advertise">Advertise</a>
+        </Links>
+      </Content>
       <DecorativeContent>
         <Gradient />
         <Looper speed={10} direction="left">
