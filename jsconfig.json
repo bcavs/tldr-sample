@@ -3,7 +3,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
-      "@styles": ["./styles/index.js"]
+      "@styles": ["./styles/index.js"],
+      "@utils": ["./utils/index.js"]
     }
   }
 }
