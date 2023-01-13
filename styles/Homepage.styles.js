@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { media, typography } from "@utils";
 
 export const HomepageContainer = styled.div`
@@ -53,10 +53,18 @@ export const Subhead = styled(typography.R3)`
 export const FormControl = styled.div`
   display: flex;
   margin-top: 1rem;
+  position: relative;
   input {
     flex: 1;
     border-radius: 8px;
     padding: 1rem;
+
+    ${(props) =>
+      props.hasError &&
+      css`
+        border: 1px solid red;
+        /* background-color: #ffa6a6; */
+      `}
   }
   button {
     padding: 1rem 2rem;
@@ -70,7 +78,16 @@ export const FormControl = styled.div`
     border: none;
     margin: 0 0.5rem;
     color: white;
+    cursor: pointer;
   }
+`;
+
+export const ErrorText = styled(typography.P6a)`
+  position: absolute;
+  bottom: -24px;
+  left: 0;
+  color: red;
+  margin: 0;
 `;
 
 export const ButtonText = styled(typography.P5a)`

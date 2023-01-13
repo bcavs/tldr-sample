@@ -62,10 +62,10 @@ const P5a = styled.p`
   font-weight: 400;
 `;
 
-// const P6a = styled.p`
-//   font-size: 0.875em;
-//   font-weight: 400;
-// `;
+const P6a = styled.p`
+  font-size: 0.875em;
+  font-weight: 400;
+`;
 
 // const R1 = styled(H1)`
 //   font-size: 2em;
@@ -110,7 +110,7 @@ const typography = {
   //   P3a,
   //   P4a,
   P5a,
-  //   P6a,
+  P6a,
   //   R1,
   R2,
   R3,

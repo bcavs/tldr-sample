@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { HomepageStyles } from "@styles";
+import { array, object, string, number } from "yup";
+
 const {
   HomepageContainer,
   TLDR,
@@ -10,9 +12,40 @@ const {
   FormControl,
   ButtonText,
   Gradient,
+  ErrorText,
 } = HomepageStyles;
 
 export default function Home() {
+  const [email, setEmail] = useState("");
+  const [error, setError] = useState(false);
+
+  //send email to api on button click
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const emailValidation = string().email().required();
+
+    emailValidation.isValid(email).then(function (valid) {
+      if (!valid) {
+        console.log("is not valid", email);
+        setError(true);
+        return;
+      }
+
+      setError(false);
+
+      fetch("/api/email", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      })
+        .then((res) => res.json())
+        .then((data) => console.log(data));
+    });
+  };
+
   return (
     <HomepageContainer>
       <CopyContent>
@@ -27,11 +60,16 @@ export default function Home() {
           Free daily newsletter of the most interesting stories in startups 🚀,
           tech 📱, and programming 💻!
         </Subhead>
-        <FormControl>
-          <input type="email" placeholder="Email" />
-          <button>
+        <FormControl hasError={error}>
+          <input
+            type="email"
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <button onClick={(e) => handleSubmit(e)}>
             <ButtonText>Subscribe</ButtonText>
           </button>
+          {error && <ErrorText>Invalid email</ErrorText>}
         </FormControl>
       </CopyContent>
       <DecorativeContent>
