@@ -8,6 +8,7 @@ export const HomepageContainer = styled.div`
   color: #fff;
   align-items: center;
   grid-template-columns: 1fr;
+  grid-template-rows: 70vh 30vh;
   grid-template-areas:
     "content"
     "decorative";
@@ -15,6 +16,7 @@ export const HomepageContainer = styled.div`
   ${media.medium`
     grid-template-areas: "content decorative";
     grid-template-columns: 60% 40%;
+    grid-template-rows: 1fr;  
   `}
 `;
 
@@ -90,6 +92,14 @@ export const ErrorText = styled(typography.P6a)`
   margin: 0;
 `;
 
+export const SuccessText = styled(typography.P6a)`
+  position: absolute;
+  bottom: -24px;
+  left: 0;
+  color: green;
+  margin: 0;
+`;
+
 export const ButtonText = styled(typography.P5a)`
   margin: 0;
   font-weight: bold;
@@ -103,23 +113,30 @@ export const DecorativeContent = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: red;
+  span {
+    font-size: 48px;
+    ${media.medium`
+      font-size: 64px;
+    `}
+  }
 `;
 
 export const Gradient = styled.div`
   position: absolute;
-  top: 0;
+  top: -1px;
   left: 0;
+  z-index: 2;
   height: 100%;
   width: 100%;
   background: linear-gradient(
     341.06deg,
     rgba(12, 17, 27, 0) 0%,
-    #0c111b 47.88%,
+    #0c111b 59.73%,
     #0c111b 85.12%
   );
 
   ${media.medium`
+    top: 0;
     background: linear-gradient(
       162.9deg,
       #0c111b 22.92%,

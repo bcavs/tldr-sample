@@ -4,7 +4,8 @@
     "paths": {
       "@/*": ["./*"],
       "@styles": ["./styles/index.js"],
-      "@utils": ["./utils/index.js"]
+      "@utils": ["./utils/index.js"],
+      "@components": ["./components/index.js"]
     }
   }
 }

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import { HomepageStyles } from "@styles";
-import { array, object, string, number } from "yup";
+import { string } from "yup";
+import { Looper } from "@components";
 
 const {
   HomepageContainer,
@@ -13,26 +14,29 @@ const {
   ButtonText,
   Gradient,
   ErrorText,
+  SuccessText,
 } = HomepageStyles;
 
 export default function Home() {
   const [email, setEmail] = useState("");
   const [error, setError] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   //send email to api on button click
   const handleSubmit = async (e) => {
+    setSuccess(false);
+    setError(false);
     e.preventDefault();
 
     const emailValidation = string().email().required();
 
     emailValidation.isValid(email).then(function (valid) {
       if (!valid) {
-        console.log("is not valid", email);
         setError(true);
         return;
       }
 
-      setError(false);
+      setSuccess(true);
 
       fetch("/api/email", {
         method: "POST",
@@ -64,17 +68,48 @@ export default function Home() {
           <input
             type="email"
             placeholder="Email"
-            onChange={(e) => setEmail(e.target.value)}
+            onChange={(e) => {
+              setSuccess(false);
+              setEmail(e.target.value);
+            }}
           />
           <button onClick={(e) => handleSubmit(e)}>
             <ButtonText>Subscribe</ButtonText>
           </button>
           {error && <ErrorText>Invalid email</ErrorText>}
+          {success && <SuccessText>You've subscribed</SuccessText>}
         </FormControl>
       </CopyContent>
       <DecorativeContent>
         <Gradient />
-        <p>images</p>
+        <Looper speed={10} direction="left">
+          <span>📱</span>
+          <span>👨‍💻</span>
+          <span>🚀</span>
+          <span>🧬</span>
+          <span>🤖</span>
+        </Looper>
+        <Looper speed={20} direction="left">
+          <span>🧬</span>
+          <span>🤖</span>
+          <span>🚀</span>
+          <span>📱</span>
+          <span>👨‍💻</span>
+        </Looper>
+        <Looper speed={7} direction="left">
+          <span>👨‍💻</span>
+          <span>🚀</span>
+          <span>🤖</span>
+          <span>📱</span>
+          <span>🧬</span>
+        </Looper>
+        <Looper speed={16} direction="left">
+          <span>📱</span>
+          <span>🧬</span>
+          <span>🚀</span>
+          <span>🤖</span>
+          <span>👨‍💻</span>
+        </Looper>
       </DecorativeContent>
     </HomepageContainer>
   );
